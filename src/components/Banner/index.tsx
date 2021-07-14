@@ -1,7 +1,14 @@
+import { Flex, Image } from '@chakra-ui/react'
 
 
 export function Banner() {
     return(
-        <h1>banner</h1>
+        <Flex
+         w="100%"
+         h="335px"
+         bgImage="url('/banner.jpg')"
+        >
+
+        </Flex>
     )
 }

@@ -6,29 +6,27 @@ export function Header() {
           as="header"
           bg="white"
           w="100%"
-          maxWidth={1480}
+          px="1rem"
           h={["50px", "100px"]}
           mx="auto"
           justify="center"
-          px="1rem"
           align="center"
           >
-              <Grid
+            <Grid
               h="100%"
               mx="auto"
               maxW="100%"
               alignItems="center"
               templateColumns="repeat(3, 1fr)"
               justifyContent="center"
-
-              >
-                  <Image 
-                    src="/logo.svg"
-                    alt="um avião voando sobre o nome da marca World trip"
-                    justifySelf="center"
-                    gridColumn="2"
-
-                  />
+            >
+                <Image 
+                w={["81px", "184px"]}
+                src="/logo.svg"
+                alt="um avião voando sobre o nome da marca World trip"
+                justifySelf="center"
+                gridColumn="2"
+                />
               </Grid>
         </Flex>
     )

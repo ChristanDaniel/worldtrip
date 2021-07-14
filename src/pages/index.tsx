@@ -6,7 +6,7 @@ import { Banner } from '../components/Banner/index'
 
 export default function Home() {
   return(
-    <Flex>
+    <Flex direction="column">
       <Header />
       <Banner />
     </Flex>
