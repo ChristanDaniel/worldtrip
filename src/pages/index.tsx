@@ -8,9 +8,16 @@ import {Header} from "../components/Header";
 import Separador from "../components/Separador";
 import { Banner } from '../components/Banner/index'
 
+interface HomeProps {
+  continents:{
+    slug: string;
+    title: string;
+    summary: string;
+    image: string;
+  }[]
+}
 
-
-export default function Home() {
+export default function Home({ continents }: HomeProps) {
   return(
     <Flex direction="column">
   
