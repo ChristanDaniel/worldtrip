@@ -1,5 +1,8 @@
 import { Flex, Heading } from "@chakra-ui/react";
 
+import { getPrismicClient } from "../services/prismic";
+import { GetStaticProps } from "next";
+
 import Head from "next/head";
 
 import Slider from "../components/Slider";
@@ -7,6 +10,7 @@ import Caracteristicas from "../components/Caracteristicas";
 import {Header} from "../components/Header";
 import Separador from "../components/Separador";
 import { Banner } from '../components/Banner/index'
+
 
 interface HomeProps {
   continents:{
@@ -51,3 +55,10 @@ export default function Home({ continents }: HomeProps) {
   </Flex>
   )
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient();
+
+  const response = await prismic.query(
+    [Prismic.Predicates.at('document.type', 'continent')]
+  )
