@@ -67,6 +67,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
     Prismic.Predicates.at('document.type', 'continent'),
   ]);
 
+  const paths = continents.results.map(continent => {
+    return {
+      params: {
+        slug: continent.uid,
+      },
+    };
+  });
+
   return {
     paths,
     fallback: true,
