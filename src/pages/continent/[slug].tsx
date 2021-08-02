@@ -6,6 +6,7 @@ import Head from "next/head";
 
 import { getPrismicClient } from "../../services/prismic";
 import Prismic from '@prismicio/client';
+import { RichText } from 'prismic-dom';
 
 import Cities from "../../components/Cities";
 import Content from "../../components/Content";
@@ -87,5 +88,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const response = await prismic.getByUID('continent', String(slug), {});
 
   const continent = {
+    slug:response.uid,
+    title: response.data.title,
+    description: RichText.asText(response.data.description),
+    banner_image: response.data.banner_image.url,
+    countries: response.data.countries,
+    languages: response.data.languages,
+    
   };
+
+  return {
+    props: {
+      continent
+    },
+    revalidate: 1800,
+  }
 }
