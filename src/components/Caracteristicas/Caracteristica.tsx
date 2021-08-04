@@ -5,11 +5,11 @@ interface CaracteristicaProps {
     text: string;
 }
 
-export default function Caracteristica({icon, text}:CaracteristicaProps ) {
+export default function Caracteristica({icon, text}: CaracteristicaProps ) {
 
     const isMobile = useBreakpointValue({
-        base:false,
-        sm:true
+        base: false,
+        sm: true
     })
 
     return (
