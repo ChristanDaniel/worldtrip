@@ -1,5 +1,6 @@
 import { Flex, Heading } from "@chakra-ui/react";
 
+import Prismic from '@prismicio/client';
 import { getPrismicClient } from "../services/prismic";
 import { GetStaticProps } from "next";
 
@@ -62,3 +63,19 @@ export const getStaticProps: GetStaticProps = async () => {
   const response = await prismic.query(
     [Prismic.Predicates.at('document.type', 'continent')]
   )
+
+  const continents = response.results.map(continent => {
+    return {
+      slug: continent.uid,
+      title: continent.data.title,
+      summary: continent.data.summary,
+      image: continent.data.slider_image.url
+    }
+  })
+
+  return {
+    props: {
+      continents
+    }
+  }
+}
