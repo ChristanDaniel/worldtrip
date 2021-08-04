@@ -6,7 +6,7 @@ import Head from "next/head";
 
 import { getPrismicClient } from "../../services/prismic";
 import Prismic from '@prismicio/client';
-import { RichText } from 'prismic-dom';
+// import { RichText } from 'prismic-dom';
 
 import Cities from "../../components/Cities";
 import Content from "../../components/Content";
@@ -88,13 +88,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const response = await prismic.getByUID('continent', String(slug), {});
 
   const continent = {
-    slug:response.uid,
+    slug: response.uid,
     title: response.data.title,
-    description: RichText.asText(response.data.description),
+    // description: RichText.asText(response.data.description),
     banner_image: response.data.banner_image.url,
     countries: response.data.countries,
     languages: response.data.languages,
-    
+    cities: response.data.cities,
+    cities_list: response.data.cities_list,
+    cities100: response.data.cities100.map(city => {
+      return {
+        city: city.city,
+        country: city.country,
+        thumbnail: city.thumbnail.url,
+        flag: city.flag.url,
+      }
+    })
   };
 
   return {
